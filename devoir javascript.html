@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+   body {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGecso9dT8N0apueIGmpGtbO3CCXkJvKI0uw&usqp=CAU'); 
+            background-size: 200px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+
+    form {
+      width: 300px;
+      margin: 0 auto;
+      background-color: #252121;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4c5e4c;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #5e715f;
+    }
+
+    #result {
+      margin-top: 50px;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var form = document.getElementById('calculator-form');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var num1 = parseFloat(document.getElementById('number1').value);
+        var num2 = parseFloat(document.getElementById('number2').value);
+
+        if (isNaN(num1) || isNaN(num2)) {
+          alert('Veuillez saisir des valeurs valides.');
+          return;
+        }
+
+        if (num2 === 0) {
+          alert('La division de tout nombre par zéro est impossible.');
+          return;
+        }
+
+        var sum = num1 + num2;
+        var product = num1 * num2;
+        var quotient = num1 / num2;
+        var difference = num1 - num2;
+
+        var resultMessage = `Addition= ${sum}\nMultiplication= ${product}\nDivision= ${quotient}\nSoustraction= ${difference}`;
+        document.getElementById('result').innerText = resultMessage;
+      });
+    });
+
+  </script>
+</head>
+<body>
+  <form id="calculator-form">
+    <input type="text" id="number1" placeholder="Entrez la première valeur " required>
+    <input type="text" id="number2" placeholder="Entrez la deuxième valeur " required>
+    <button type="submit">Calculer</button>
+  </form>
+  <div id="result"></div>
+</body>
+</html>
